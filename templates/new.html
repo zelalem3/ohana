@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('addprevious') }}">Add previous Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('previous') }}">previous event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('allbooked') }}">booked events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('alltestimonials') }}">all testimonials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: white;" aria-current="page" href="{{ url_for('allbooked') }}">booked events</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link active" style="color: white;" aria-current="page" href="{{ url_for('allevent') }}">allevents</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('addevent') }}">add events</a>
+        </li>
+
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+</body>
+</html>

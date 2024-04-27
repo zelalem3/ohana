@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/dog-img.jp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.container {
+    flex: 1;
+    margin-left: 7%;
+    width: 40%;
+    margin-top: 30px;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav .nav-link.active {
+  color: white;
+}
+
+.event-details {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    color: #333333;
+}
+
+.event-details:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.big-image {
+    width: 70%;
+
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    margin-left: 25%;
+    color: #333333;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #666666;
+
+}
+
+.btn {
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left:25%;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+}
+
+
+.navbar-nav .nav-link:hover {
+    color: grey;
+}

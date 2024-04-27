@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OHANA</title>
+  <link rel="icon" href="../static/images/newohana.PNG" type="image/png">
+  <style>
+
+</style>
+  <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+</style>
+</head>
+
+<body style="">
+
+{% if is_logged_in %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('booked') }}">Mybooking</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('book') }}">Book</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+{% else %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+{% endif %}
+
+
+<section class="hero-section" style="position: relative; overflow: hidden;">
+    <div class="hero-content" style="position: relative; z-index: 1; padding: 20px; color: #fff; text-align: center;">
+        <h1></h1>
+        <h1 style="font-size: 24px; color: black;">Ohana: Creating a Timeless and Aesthetic Memories</h1>
+        <h1 style="font-size: 18px; color: black;">
+            At "ኦሃና የክት ጥሪ," we take great pride in our ability to create customized and all-encompassing experiences for high school seniors as they approach graduation.
+            Our main objective is to relieve their stress and allow them to fully engage in the joy and festivities of this significant moment.
+        </h1>
+    </div>
+</section>
+  <section class="features-section" >
+
+    <div class="features-grid" style="background-color: #021f16;">
+      <div class="feature">
+        <img src="../static/images/book.png" alt="Feature Icon">
+        <h3>Want to book for an event?</h3>
+          <a href="{{ url_for('book') }}"><button type="button" class="btn btn-dark">Book</button> </a>
+      </div>
+      <div class="feature">
+        <img src="../static/images/aboutus.png" alt="Feature Icon">
+        <h3>want to know more about us?</h3>
+       <a href="{{ url_for('about') }}"><button type="button" class="btn btn-dark">About Us</button> </a>
+      </div>
+      <div class="feature">
+        <img src="../static/images/contactus.png" alt="Feature Icon">
+        <h3 style="margin-bottom: 10px;">want to get in touch?</h3>
+        <section class="py-3 py-md-5 py-xl-8">
+
+
+ <main style="background-color: #f5f5f5;margin-top:0px;">
+    <section >
+
+        <ul>
+            <li><i class="fas fa-envelope"></i> @gmail.com</li>
+            <li><i class="fas fa-phone"></i> +251 123-456-7890</li>
+            <li><i class="fab fa-instagram"></i> @ohana</li>
+            <li><i class="fas fa-map-marker-alt"></i> Address</li>
+
+        </ul>
+    </section>
+</main>
+        <a href="{{ url_for('contact') }}"><button type="button" class="btn btn-dark">Contact Us</button> </a>
+      </div>
+    </div>
+  </section>
+  <section class="testimonial-section">
+
+    <div class="testimonial">
+      <div class="testimonial-content">
+        <p>Each package provided by "ኦሃና የክት ጥሪ" is meticulously designed, including captivating
+          decorations, cutting-edge sound systems, and professional photography and videography services.
+          Understanding the uniqueness of each high school senior,
+          we offer customizable options to suit their individual preferences.</p>
+        <p>Our mission revolves around excellence and a strong passion for creating extraordinary moments.
+          With a dedicated team of professionals and extensive experience in event planning, we are ready to
+          bring your vision to fruition. Our commitment to delivering seamless, exceptional
+          experiences distinguishes "ኦሃና የክት ጥሪ" as the top choice for high school senior celebrations.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section" style="margin: 0px;background-color: #021f16;">
+    <h2>Ready to book your event?</h2>
+    <a class="cta-button" href="{{ url_for('book') }}">Book an event Now</a>
+  </section>
+
+  <footer>
+    <p>&copy; {{ year }} OHANA. All rights reserved.</p>
+  </footer>
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+<script src="../static/js/index.js"></script>
+</body>
+</html>

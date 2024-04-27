@@ -1,0 +1,131 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Your Booking</title>
+  <link rel="icon" href="../static/images/newohana.PNG" type="image/png">
+  <link rel="stylesheet" href="../static/css/youbooked.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+{% if is_logged_in %}
+<nav class="navbar navbar-expand-lg bg-body" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('booked') }}">Mybooking</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('book') }}">Book</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+{% else %}
+<nav class="navbar navbar-expand-lg bg-body" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+{% endif %}
+
+<div class="wrapper">
+  <table>
+    <thead>
+      <tr>
+
+        <th>event name</th>
+        <th>booked date</th>
+        <th>booked for</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+{% for b in books %}
+  <tr>
+
+
+    <td>{{ b.event.name }} </td>
+    <td>{{ b.booked_date }}</td>
+    <td>{{ b.booked_for }}</td>
+
+
+
+
+  </tr>
+{% endfor %}
+
+    </tbody>
+  </table>
+<footer class="bg-dark text-light text-center py-3 footer">
+    <p>&copy; {{year}} name. All rights reserved.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+</div>
+</body>
+</html>

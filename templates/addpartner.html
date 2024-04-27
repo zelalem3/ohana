@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add previous event</title>
+    <link rel="icon" href="../static/images/newohana.PNG" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
+        }
+
+        .navbar {
+            background-color: #021f16;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: white;
+        }
+
+        h1, p, a, h2, li, label {
+            font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <img style="width: 60px;" src="../static/images/newohana.png">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('addprevious') }}">Add previous Event</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('allprevious') }}">previous event</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('allbooked') }}">booked events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('alltestimonials') }}">all testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('addtestimonials') }}">add testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ url_for('allbooked') }}">booked events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ url_for('allevent') }}">allevents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('addevent') }}">add events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>Add new event</h2>
+    <form action="{{ url_for('addpartner') }}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="eventname">partner Name</label>
+            <input type="text" name="name" class="form-control" id="eventname">
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">partner Description</label>
+            <textarea style="height: 150px; width: 100%;" type="text" name="description"
+                      class="form-control" id="description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="img">Partner Image:</label>
+            <input type="file" name="image" id="img" class="form-control-file">
+        </div>
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+ body {
+    background-color: #31363F;
+  }
+
+header {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+ul, h1, h2, h3, li, i{
+font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
+}
+
+nav ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Style the hero section */
+.hero-section {
+  display: flex;
+  min-height: 100vh;
+   margin-top: 3px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+  position: relative;
+   overflow: hidden;
+   background-image: url(../images/dog-img.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.hero-content {
+  flex-basis: 50%;
+}
+
+
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+
+  width: 100%
+  hieght: 60%;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.hero-image img {
+  width: 800px;
+
+}
+li i{
+margin-top: 10px;
+font-size:25px;
+}
+
+
+.features-section {
+  background-color: #021f16;
+  padding: 40px;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 500px));
+  gap: 20px;
+  justify-content: center;
+}
+
+.feature {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.feature img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.feature h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Style the testimonial section */
+.testimonial-section {
+  background-color: #f9f9f9;
+  padding: 60px;
+  text-align: center;
+}
+
+.testimonial-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.testimonial-content p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.testimonial-content span {
+  font-size: 16px;
+}
+
+.testimonial-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+
+.cta-section {
+  background-color: #333;
+  padding: 40px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.cta-button:hover {
+  background-color: #ccc;
+}
+
+/* Style the footer */
+footer {
+  background-color: #021f16;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 14px;
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav .nav-link.active {
+  color: white;
+}
+h1{
+color: black;
+}
+
+.navbar-nav .nav-link:hover {
+  color: grey;
+}
+h1 {
+     margin: 0;
+     font-size: 48px;
+     letter-spacing: 4px;
+     text-transform: uppercase;
+     color: black;
+    }
+
+main {
+        flex: 1;
+        margin: 20px auto;
+        padding: 40px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        max-width: 800px;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    h2 {
+
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-left: 20px;
+    }
+
+    li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        font-size: 18px; /* Adjust the font size */
+        color: #555; /* Adjust the text color */
+    }
+
+    li i {
+        margin-right: 10px;
+        color: #333;
+        font-size: 20px;
+    }
+.transition-effect {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}

@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import bleach
 import datetime
 from datetime import timedelta
-from flask import abort
+from flask import abort, jsonify
 
 
 current_year = datetime.datetime.now().year
@@ -76,7 +76,7 @@ class Previous(db.Model):
     photo1 = db.Column(db.String)
     photo2 = db.Column(db.String)
     photo3 = db.Column(db.String)
-    photo4 = db.Column(db.String)
+    video = db.Column(db.String)
 
 
     def __repr__(self):
@@ -89,7 +89,6 @@ class Testimonials(db.Model):
     fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
-
     position = db.Column(db.String, nullable=False)
     company_name = db.Column(db.String, nullable=False)
 
@@ -100,6 +99,7 @@ class Blog(db.Model):
     title = db.Column(db.String, nullable=False)
     subtitle = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
+    author =db.Column(db.String, nullable=False)
     Date = db.Column(db.String, default=datetime.date.today().strftime("%B %d, %Y"))
 
 
@@ -140,6 +140,7 @@ def admin_required(view_func):
 @app.route("/")
 def home():
     is_logged_in = current_user.is_authenticated
+
     return render_template("index.html", is_logged_in=is_logged_in, year=current_year)
 
 
@@ -176,12 +177,12 @@ def anotherevent():
 
 @app.route("/bookfromlink/<int:id>", methods=["POST", "GET"])
 @login_required
-def bookfromlink(id, num):
+def bookfromlink(id):
     if request.method == "POST":
         event = Event.query.filter_by(id=id).first()
         date = request.form.get("eventDate")
         specfic_request = request.form.get("specialRequest")
-        event_type = num
+
         new_book = Book(
             user_id=current_user.id,
             event_id=id,
@@ -229,7 +230,8 @@ def bookfromlink(id, num):
         #     return render_template("failure.html")
 
     else:
-        return render_template("bookfromlink.html")
+        event = Event.query.filter_by(id=id).first()
+        return render_template("bookfromlink.html", event=event)
 
 @app.route("/book", methods=["GET", "POST"])
 @login_required
@@ -415,6 +417,7 @@ def contact():
             email=email,
             message=message,
         )
+
         db.session.add(new_message)
         db.session.commit()
         flash("your message has been recieved")
@@ -564,10 +567,11 @@ def addprevious():
         date = request.form.get("date")
         details = request.form.get("details")
         description = request.form.get("description")
+        video = request.form.get("video")
         image = request.files['image']
         image1 = request.files['image1']
         image2 = request.files['image2']
-        image3 = request.files['image3']
+
         destination_folder = os.path.join('static', 'images')
 
         if image:
@@ -591,12 +595,7 @@ def addprevious():
             relative_path2 = "null"
 
 
-        if image3:
-                image_path3 = os.path.join(app.root_path, destination_folder, image3.filename)
-                image3.save(image_path3)
-                relative_path3 = os.path.relpath(image_path3, app.root_path)
-        else:
-            relative_path3 = "null"
+
 
 
         previous = Previous(
@@ -608,7 +607,7 @@ def addprevious():
             photo1=relative_path,
             photo2=relative_path1,
             photo3=relative_path2,
-            photo4=relative_path3,
+            photo4=video,
 
         )
         db.session.add(previous)
@@ -671,7 +670,7 @@ def addtestimonials():
             db.session.commit()
             return redirect(url_for('alltestimonials'))
 
-    return render_template("addtestimonial.html")
+    return render_template("addtestimonial.css.html")
 
 
 @app.route("/deletetestimonial/<int:id>", methods=["POST", "GET"])
@@ -720,7 +719,8 @@ def newblog():
         new_blog = Blog(
             title=request.form.get("title"),
             content= request.form.get("body"),
-            subtitle= request.form.get("subtitle")
+            subtitle= request.form.get("subtitle"),
+            author = request.form.get("author"),
         )
         db.session.add(new_blog)
         db.session.commit()
@@ -826,7 +826,24 @@ def addpartner():
     else:
         return render_template("addpartner.html")
 
+@app.route("/fetchprice/<int:id>", methods=["POST"])
+def fetchprice(id):
+    user_id = current_user.id
+    event = Event.query.filter_by(id=id).first()
+    print(event.price)
+    if event:
 
+        response = {"message": "Price fetched successfully", "data": event.price}
+        return jsonify(response), 200
+    else:
+        response = {"message": "Event not found"}
+        return jsonify(response), 404
+
+
+@app.route("/allmessages", methods=["GET"])
+def messages():
+    all_messages =Message.query.order_by(id).desc();
+    return render_template("allmessages.html", all_messages=all_messages)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=4000)
    

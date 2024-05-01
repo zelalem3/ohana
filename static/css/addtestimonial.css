@@ -1,0 +1,9 @@
+   .navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav .nav-link.active {
+  color: white;
+}
+h1, p, a, h2, li, label{
+font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
+}

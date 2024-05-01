@@ -12,16 +12,17 @@
 </head>
 <body>
 {% if is_logged_in %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #021f16;">
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
   <div class="container-fluid">
-    <img  style="width: 60px; " src="../static/images/newohana.png">
+      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('event') }}">Event</a>
@@ -60,16 +61,16 @@
 
 
 {% else %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #021f16;">
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
   <div class="container-fluid">
-    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+      <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('event') }}">Event</a>
@@ -107,6 +108,7 @@
 </nav>
 
 {% endif %}
+
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     <div class="alert alert-info flash-message-container shadow-lg rounded" role="alert">
@@ -140,8 +142,8 @@
                   </div>
                   <div class="">
                     <h6 class="font-weight-medium">Phone</h6>
-                    <p class="">251 546 9442
-                      <br> 630 446 8851</p>
+                    <a href="tel:+1234567890" class="phone-link" style="display:block;">Click to Call: +1 234-567-890</a>
+                    <a href="tel:+1234567890" class="phone-link">Click to Call: +1 234-567-890</a>
                   </div>
                 </div>
               </div>
@@ -208,6 +210,12 @@
         </div>
 
 </div>
+      <a href="https://www.tiktok.com/ohana" style="position: fixed; top: 30%; right: 20px;"><img src="../static/images/tittok.png" style="width: 40px; height: 40px;border-radius: 50%;" alt="Twitter"></a>
+
+       <a href="https://www.instagram.com/ohana" style="position: fixed; top: 39%; right: 20px;"><img src="../static/images/instagram.jpg" style="width: 40px; height: 40px;border-radius: 50%;" alt="Instagram"></a>
+  <a href="https://www.linkedin.com/ohana" style="position: fixed; top: 47%; right: 20px;"><img src="../static/images/facebook.png" style="width: 40px; height: 40px;" alt="LinkedIn"></a>
+ <a href="https://www.linkedin.com/ohana" style="position: fixed; top: 55%; right: 20px;"><img src="../static/images/youtube.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="LinkedIn"></a>
+
 
   <!-- Optional JavaScript dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

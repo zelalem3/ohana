@@ -16,214 +16,22 @@
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-  <style>
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #f8f9fa;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    h5{
-    margin-right: 20%;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .site-heading {
-      text-align: center;
-      color: #fff;
-      padding-top: 50px;
-      padding-bottom: 25px;
-    }
-
-    .site-heading h1 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-
-    .site-heading .subheading {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.1;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .card-columns {
-      column-count: 2;
-    }
-    .event-details {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
-    color: #333333;
-}
-
-.event-details:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-    .card {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      margin-bottom: 30px;
-      margin-right: 40px;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    .card-img-top {
-      margin-top: 20px;
-      margin-left: 10%;
-     width: 60%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .card-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      margin-left: 20%;
-    }
-    button{
-    margin-left: 30%;
-    }
-
-    .card-text {
-      font-size: 16px;
-      font-weight: 400;
-      color: #777;
-    }
-    .container{
-    margin-top: 50px;
-    }
-    a{
-    text-decoration: none;
-    text-align: center;
-    }
-    img{
-
-    }
-    .navbar-nav .nav-link:hover {
-  color: grey;
-}
-.navbar-nav .nav-link {
-  color: white;
-}
-.navbar-nav .nav-link.active {
-  color: white;
-}
-.btn-dark {
-    background-color: #343a40;
-    color: #ffffff;
-    border: none;
-}
-.btn {
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 4px;
-    margin-left:25%;
-}
-
-
-.btn-dark:hover {
-    background-color: #23272b;
-}
-  @media (max-width: 576px) {
-      .site-heading h1 {
-        font-size: 24px;
-
-      }
-      .card-img-top{
-      width: 100%;
-      }
-
-      .site-heading .subheading {
-        font-size: 16px;
-      }
-
-      .card-columns {
-        column-count: 1;
-      }
-
-      .card-img-top {
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-      }
-
-      .card-title {
-        font-size: 20px;
-        margin-left: 0;
-      }
-
-      .btn {
-        margin-left: 0;
-      }
-    }
-
-
-    /* Styles for medium devices (between 576px and 992px width) */
-
-    @media (min-width: 576px) and (max-width: 992px) {
-      .card-img-top{
-      width: 80%;
-      margin-right: 10%;
-
-    }
-
-
-}
-    /* Styles for large devices (992px width and above) */
-
-    @media (min-width: 992px) {
-      /* Adjust styles as needed */
-        .card-img-top{
-      width: 100%;
-    }
-
-
-    }
-
-  </style>
+  <link rel="stylesheet" href="../static/css/anotherevent.css">
 </head>
 
 <body>
 {% if is_logged_in %}
 <nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
   <div class="container-fluid">
-    <img  style="width: 60px; " src="../static/images/newohana.png">
+      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('event') }}">Event</a>
@@ -264,14 +72,14 @@
 {% else %}
 <nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
   <div class="container-fluid">
-    <img  style="width: 60px; " src="../static/images/newohana.png">
+    <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=" {{ url_for('home') }}">Home</a>
+      <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('event') }}">Event</a>
@@ -292,6 +100,9 @@
           <li class="nav-item">
           <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
         </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
+        </li>
               <li class="nav-item">
           <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
         </li>
@@ -306,6 +117,7 @@
 </nav>
 
 {% endif %}
+
 
 
   <div class="container">

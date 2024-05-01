@@ -3,61 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-  <link rel="stylesheet" href="../static/css/edit.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
-    }
 
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    textarea {
-      height: 170px;
-    }
-
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-  </style>
+<link rel="stylesheet" href="../static/css/editblog.css">
 </head>
 <body>
+{% if is_logged_in %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('booked') }}">Mybooking</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('book') }}">Book</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+{% else %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+{% endif %}
+
   <form action="/editblog/{{ blog.id }}" method="POST">
     <label for="title">Title</label>
     <input type="text" id="title" name="title" value="{{ blog.title }}">

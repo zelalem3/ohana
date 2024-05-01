@@ -9,3 +9,42 @@
 .navbar-nav .nav-link:hover {
   color: grey;
 }
+  .event-details {
+            margin: 60px;
+        }
+        .content-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.appealing-image {
+    flex-shrink: 0;
+    width: 50%;
+    height: auto;
+    margin-right: 20px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+        .card-header {
+            background-color: #021f16;
+            color: #ffffff;
+        }
+
+
+        .card-body {
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .appealing-image{
+        width: 50%;
+        }

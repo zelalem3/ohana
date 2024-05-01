@@ -5,90 +5,107 @@
     <title>{{ blog.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .post-preview a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .post-title {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .post-subtitle {
-            font-size: 24px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .post-meta {
-            font-size: 16px;
-            color: #777;
-            margin-bottom: 5px;
-        }
-
-        hr {
-            border-top: 1px solid #ddd;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        /* Additional Styling for Beauty */
-        body {
-            line-height: 1.6;
-        }
-
-        .container {
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-
-        .post-title {
-            color: #333;
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 0;
-        }
-
-        .post-subtitle {
-            color: #555;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .post-meta {
-            font-size: 16px;
-            color: #777;
-            margin-bottom: 10px;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/specficblog.css">
 </head>
 <body>
+{% if is_logged_in %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('booked') }}">Mybooking</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('book') }}">Book</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+{% else %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+{% endif %}
+
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -105,7 +122,8 @@
                   {{ blog.content }}
               </p>
           </a>
-          <p class="post-meta">Posted On {{ blog.Date }}</p>
+          <p class="post-meta">Posted by {{ blog.author }}</p>
+          <p class="post-meta">On {{ blog.Date }}</p>
         </div>
         <hr>
       </div>

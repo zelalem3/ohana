@@ -16,119 +16,105 @@
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-  <style>
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #f8f9fa;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    .masthead {
-      position: relative;
-      height: 60vh;
-      background-image: url(../static/images/dog-img.jpg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding-top: 80px;
-      padding-bottom: 50px;
-      margin-top: 0px;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .site-heading {
-      text-align: center;
-      color: #fff;
-      padding-top: 50px;
-      padding-bottom: 25px;
-    }
-
-    .site-heading h1 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-
-    .site-heading .subheading {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.1;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .card-columns {
-      column-count: 3;
-    }
-
-    .card {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      margin-bottom: 30px;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    .card-img-top {
-      width:100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .card-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      margin-left: 20%;
-    }
-    button{
-    margin-left: 30%;
-    }
-
-    .card-text {
-      font-size: 16px;
-      font-weight: 400;
-      color: #777;
-    }
-    .container{
-    margin-top: 50px;
-    }
-    a{
-    text-decoration: none;
-    text-align: center;
-    }
-    .navbar-nav .nav-link:hover {
-  color: grey;
-}
-.navbar-nav .nav-link {
-  color: white;
-}
-.navbar-nav .nav-link.active {
-  color: white;
-}
-  </style>
+  <link rel="stylesheet" href="../static/css/blog.css">
 </head>
+{% if is_logged_in %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('booked') }}">Mybooking</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('book') }}">Book</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+{% else %}
+<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+  <div class="container-fluid">
+    <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+        </li>
+
+                <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+        </li>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+{% endif %}
 
 <body>
 {% if is_logged_in %}

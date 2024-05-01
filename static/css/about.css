@@ -277,3 +277,24 @@ img{
 
     width: 80%;
 }
+	.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav .nav-link.active {
+  color: white;
+}
+.parent {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+    }
+
+    .child {
+      width: calc(33% - 40px); /* 25% width for each child div with 10px gap */
+
+      padding: 20px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+
+    }

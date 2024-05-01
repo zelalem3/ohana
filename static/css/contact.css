@@ -7,3 +7,7 @@
 .navbar-nav .nav-link:hover {
   color: grey;
 }
+  .phone-link {
+            text-decoration: none;
+            color: #000;
+        }

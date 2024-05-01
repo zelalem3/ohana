@@ -28,6 +28,9 @@
     .image:hover {
       transform: scale(1.50);
     }
+    .image1:hover {
+      transform: scale(2);
+    }
     .description {
       margin-top: 10px;
       text-align: center;

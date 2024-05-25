@@ -259,18 +259,6 @@ def book():
         if date <= current_date:
             flash("You did not enter a valid date.")
             return redirect(url_for('book'))
-        book = Book(
-            user_id=user_id,
-            event_id=event_id,
-            specfic_request=specfic_request,
-            booked_for=date,
-            event_type=event_type,
-
-        )
-        db.session.add(book)
-        db.session.commit()
-        return redirect(url_for('booked'))
-
         key = "Bearer CHASECK_TEST-d0r12ujLpJSs6TuCGYxr4fJ6ME1vZll4"
         url = "https://api.chapa.co/v1/transaction/initialize"
         payload = {
@@ -280,7 +268,7 @@ def book():
             "first_name": first_name,
             "last_name": last_name,
             "phone_number": phone_number,
-            "tx_ref": "chewatatest-"+str(uuid.uuid4()),
+            "tx_ref": "chewatatest-" + str(uuid.uuid4()),
             "callback_url": "https://www.google.com",
             "return_url": "https://www.google.com/",
             "customization": {
@@ -302,6 +290,19 @@ def book():
 
         else:
             return render_template("failure.html")
+
+        book = Book(
+            user_id=user_id,
+            event_id=event_id,
+            specfic_request=specfic_request,
+            booked_for=date,
+            event_type=event_type,
+
+        )
+        db.session.add(book)
+        db.session.commit()
+        return redirect(url_for('booked'))
+
 
     else:
         return render_template("book.html", is_logged_in=is_logged_in, events=allevent, year=current_year)

@@ -1,65 +1,102 @@
-  body {
-      font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
-      background-color:
-    }
-    h1 {
-      text-align: center;
-      margin-top: 40px;
-      color: #333;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-      margin-top: 40px;
-    }
-     @font-face {
-          font-family: 'Whitney SSm A';
-          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
-               url('path/to/whitney-ssm-a.woff') format('woff');
-        }
+body {
+    font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5; /* Add a background color */
+}
 
-        @font-face {
-          font-family: 'Whitney SSm B';
-          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
-               url('path/to/whitney-ssm-b.woff') format('woff');
-        }
-    .image {
-      width: 400px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-    .image:hover {
-      transform: scale(1.50);
-    }
-    .image1:hover {
-      transform: scale(2);
-    }
-    .description {
-      margin-top: 10px;
-      text-align: center;
-      color: #777;
-    }
-    .navbar-nav .nav-link {
-  color: white;
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    color: #333;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 0 20px; /* Add padding for small screens */
+}
+
+@font-face {
+    font-family: 'Whitney SSm A';
+    src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+         url('path/to/whitney-ssm-a.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Whitney SSm B';
+    src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+         url('path/to/whitney-ssm-b.woff') format('woff');
+}
+
+.image {
+    width: 100%; /* Make images responsive */
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.image:hover {
+    transform: scale(1.50); /* Adjust scaling for hover */
+}
+
+.image1 {
+    width: 100%; /* Make iframes responsive */
+    max-width: 400px;
+    height: auto;
+}
+
+.image1:hover {
+    transform: scale(2); /* Adjust scaling for hover */
+}
+
+.description {
+    margin-top: 10px;
+    text-align: center;
+    color: #777;
+    padding: 0 20px; /* Add padding for small screens */
+}
+
+.navbar-nav .nav-link {
+    color: white;
+}
+
 .navbar-nav .nav-link.active {
-  color: white;
+    color: white;
 }
+
 .navbar-nav .nav-link:hover {
-  color: grey;
+    color: grey;
 }
-body.dark-mode{
-background-color:black;
-color:white;
+
+body.dark-mode {
+    background-color: black;
+    color: white;
 }
-body.dark-mode h1,p{
-color:white;
+
+body.dark-mode h1,
+body.dark-mode p {
+    color: white;
 }
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+
+    .image, .image1 {
+        width: 100%; /* Make images and iframes take full width */
+        max-width: none; /* Remove max-width restriction */
+    }
+}
+
+

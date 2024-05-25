@@ -730,20 +730,10 @@ body.dark-mode .btn-light {
 
 
 /* Importing fonts from Google */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Reseting */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
 
-body {
 
-    min-height: 100vh;
-}
+
 
 .owl-carousel .owl-item {
     transition: all 0.3s ease-in-out;
@@ -814,12 +804,14 @@ body {
 @media(min-width: 480.6px) and (max-width: 575.5px) {
     .owl-carousel .owl-item .card .name {
         left: 24%;
+
     }
 }
 
 @media(max-width: 360px) {
     .owl-carousel .owl-item .card .name {
         left: 30%;
+
     }
 }
 

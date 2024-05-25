@@ -1,74 +1,21 @@
-<!DOCTYPE html>
-<html>
 <head>
-  <title>Event Organizer Platform</title>
-  <link rel="stylesheet" type="text/css" href="../static/css/index.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ufatrue.css">
+    <title>Bashkorostan</title>
+<marquee behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" direction="right" scrollamount="50" scrolldelay="1"><div class="box"></div></maruquee>
+
+    <style>
+
+
+    </style>
 </head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>Welcome to OHANA</h1>
-      <p>Let us help you plan your event </p>
-      <a class="cta-button" href="{{ url_for('event') }}">Get Started</a>
-    </div>
-    <div class="hero-image">
-      <img src="event-image.jpg" alt="Event Image">
-    </div>
-  </section>
+  <body bgcolor="#E1E4E6">
 
-  <section class="features-section">
-    <h2>Key Features</h2>
-    <div class="features-grid">
-      <div class="feature">
-        <img src="feature-icon-1.png" alt="Feature Icon">
-        <h3>Event Registration</h3>
-        <p>Effortlessly manage event registrations and collect attendee data.</p>
-      </div>
-      <div class="feature">
-        <img src="feature-icon-2.png" alt="Feature Icon">
-        <h3>Agenda Management</h3>
-        <p>Create and organize event agendas, sessions, and speaker details.</p>
-      </div>
-      <div class="feature">
-        <img src="feature-icon-3.png" alt="Feature Icon">
-        <h3>Attendee Engagement</h3>
-        <p>Enhance attendee experiences with interactive features and personalized communication.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="testimonial-section">
-    <h2>What Event Organizers Say</h2>
-    <div class="testimonial">
-      <div class="testimonial-content">
-        <p>"This platform has revolutionized the way we manage events. It's intuitive, powerful, and saves us so much time!"</p>
-        <span>- John Smith, Event Organizer</span>
-      </div>
-      <div class="testimonial-image">
-        <img src="testimonial-image.jpg" alt="Testimonial Image">
-      </div>
-    </div>
-  </section>
+      <div class="box">
+      <img src="Top.png" alt="7 Flags" align="middle">
+          </div>
 
-  <section class="cta-section">
-    <h2>Ready to book you event?</h2>
-    <a class="cta-button" href="{{ url_for('signup') }}">Sign Up Now</a>
-  </section>
 
-  <footer>
-    <p>&copy; 2024 OHANA. All rights reserved.</p>
-  </footer>
 </body>
 </html>

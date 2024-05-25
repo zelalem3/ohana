@@ -85,7 +85,7 @@ class Previous(db.Model):
 
 class Testimonials(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    photo = db.Column(db.String )
+    photo = db.Column(db.String,)
     fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
@@ -94,12 +94,13 @@ class Testimonials(db.Model):
 
 
 
+
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     subtitle = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
-    author =db.Column(db.String, nullable=False)
+    author = db.Column(db.String, nullable=False)
     Date = db.Column(db.String, default=datetime.date.today().strftime("%B %d, %Y"))
 
 
@@ -170,10 +171,7 @@ def specficevent(eventid):
     event = Event.query.filter_by(id=eventid).first()
     return render_template("Specficevent.html", event=event, year=current_year, is_logged_in=is_logged_in)
 
-@app.route("/a", methods=["GET"])
-def anotherevent():
-    events = Event.query.all()
-    return render_template("anotherevent.html", events=events)
+
 
 @app.route("/bookfromlink/<int:id>", methods=["POST", "GET"])
 @login_required
@@ -188,7 +186,6 @@ def bookfromlink(id):
             event_id=id,
             specfic_request=specfic_request,
             booked_for=date,
-            event_type=event_type,
             price=event.price
         )
 
@@ -237,25 +234,24 @@ def bookfromlink(id):
 @login_required
 def book():
     is_logged_in = current_user.is_authenticated
-    first_name = current_user.first_name
-    last_name = current_user.last_name
-    phone_number = current_user.phone_number
-    email = current_user.email
+
     current_date = datetime.date.today().isoformat()
-    event = Event.query.all()
+    allevent = Event.query.all()
 
     if request.method == "POST":
         date = request.form.get("eventDate")
         specfic_request = request.form.get("specialRequest")
-        event_type = request.form.get("selelctedevent")
-        events = Event.query.filter_by(name=event)
-        for event in events:
-
+        event_type = request.form.get("selectedevent")
+        event = Event.query.filter_by(id=event_type).first()
+        if event:
             event_id = event.id
-        status = request.form.get("status")
+        else:
+            flash("Event could not be found")
+            return redirect(url_for('book'))
+
         user_id = current_user.id
-        amount = " "
-        if event == " ":
+
+        if event_type == " ":
             flash("You did not enter the event type")
             return redirect(url_for('book'))
 
@@ -273,7 +269,7 @@ def book():
         )
         db.session.add(book)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('booked'))
         #
         # key = "Bearer CHASECK_TEST-d0r12ujLpJSs6TuCGYxr4fJ6ME1vZll4"
         # url = "https://api.chapa.co/v1/transaction/initialize"
@@ -308,7 +304,7 @@ def book():
         #     return render_template("failure.html")
 
     else:
-        return render_template("book.html", is_logged_in=is_logged_in, events=event, year=current_year)
+        return render_template("book.html", is_logged_in=is_logged_in, events=allevent, year=current_year)
 
 
 @app.route("/error")
@@ -607,7 +603,7 @@ def addprevious():
             photo1=relative_path,
             photo2=relative_path1,
             photo3=relative_path2,
-            photo4=video,
+            video=video,
 
         )
         db.session.add(previous)
@@ -641,8 +637,10 @@ def addtestimonials():
             image.save(image_path)
 
             relative_path = os.path.relpath(image_path, app.root_path)
+        else:
+            relative_path = "../src/images/noprofile.jpg"
 
-            testimonial=Testimonials(
+        testimonial=Testimonials(
 
                 fname = request.form.get("fname"),
                 lname = request.form.get("lname"),
@@ -652,25 +650,12 @@ def addtestimonials():
                 photo = relative_path,
 
            )
-            db.session.add(testimonial)
-            db.session.commit()
-            return redirect(url_for('alltestimonials'))
-        else:
-            testimonial = Testimonials(
+        db.session.add(testimonial)
+        db.session.commit()
+        return redirect(url_for('alltestimonials'))
 
-                fname=request.form.get("fname"),
-                lname=request.form.get("lname"),
-                comment=request.form.get("comment"),
-                company_name = request.form.get("company"),
-                position=request.form.get("position"),
-
-
-            )
-            db.session.add(testimonial)
-            db.session.commit()
-            return redirect(url_for('alltestimonials'))
-
-    return render_template("addtestimonial.css.html")
+    else:
+        return render_template("addtestimonial.html")
 
 
 @app.route("/deletetestimonial/<int:id>", methods=["POST", "GET"])
@@ -693,24 +678,6 @@ def deleteprevious(id):
         db.session.commit()
         return redirect(url_for('allprevious'))
 
-@app.route("/blog", methods=["GET", "POST"])
-def blog():
-    is_logged_in = current_user.is_authenticated
-
-    page = request.args.get("page", default=1, type=int)
-    per_page = 10
-    offset = (page - 1) * per_page
-
-
-    blogs = Blog.query.order_by(Blog.id.desc()).offset(offset).limit(per_page).all()
-
-
-    total_records = Blog.query.count()
-
-
-    total_pages = (total_records // per_page) + (1 if total_records % per_page > 0 else 0)
-
-    return render_template("blog.html", blogs=blogs,page=page,total_pages=total_pages, is_logged_in=is_logged_in)
 
 @app.route("/newblog", methods=['GET', "POST"])
 @admin_required
@@ -737,7 +704,7 @@ def editblog(id):
         title = bleach.clean(request.form['title'])
         subititle = bleach.clean(request.form['subtitle'])
         content = bleach.clean(request.form["content"])
-        blog = Blog.query.filter_by(id=id)
+        blog = Blog.query.filter_by(id=id).first()
         blog.title = title
         blog.subtitle = subititle
         blog.content = content
@@ -752,11 +719,7 @@ def editblog(id):
 
 
 
-@app.route("/blog/<int:id>", methods=['GET', "POST"])
-def specficblog(id):
-    is_logged_in = current_user.is_authenticated
-    blog = Blog.query.filter_by(id=id).first()
-    return render_template("specficblog.html", blog=blog)
+
 
 @app.route("/deleteblog/<int:id>", methods=["GET", "POST"])
 @admin_required
@@ -767,7 +730,6 @@ def deleteblog(id):
     return redirect(url_for('allblog'))
 
 @app.route("/allblog", methods=['GET', "POST"])
-@admin_required
 def allblog():
     blogs = Blog.query.all()
     return render_template("allblog.html", blogs=blogs)
@@ -841,9 +803,47 @@ def fetchprice(id):
 
 
 @app.route("/allmessages", methods=["GET"])
+@login_required
 def messages():
     all_messages =Message.query.order_by(id).desc();
     return render_template("allmessages.html", all_messages=all_messages)
+
+@app.route("/onload", methods=["GET"])
+def onpageload():
+    return render_template("onpageload.html")
+
+@app.route("/blog", methods=["GET", "POST"])
+def blog():
+    is_logged_in = current_user.is_authenticated
+
+    page = request.args.get("page", default=1, type=int)
+    per_page = 10
+    offset = (page - 1) * per_page
+
+
+    blogs = Blog.query.order_by(Blog.id.desc()).offset(offset).limit(per_page).all()
+
+
+    total_records = Blog.query.count()
+
+
+    total_pages = (total_records // per_page) + (1 if total_records % per_page > 0 else 0)
+
+    return render_template("blog-template.html", blogs=blogs,page=page,total_pages=total_pages, is_logged_in=is_logged_in)
+
+
+
+@app.route("/blog/<int:id>", methods=['GET', "POST"])
+def specficblog(id):
+    blog = Blog.query.filter_by(id=id).first()
+
+    return render_template("post-page.html", blog=blog)
+
+@app.route("/sucess", methods=["GET"])
+def sucess():
+    return render_template("sucess.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=4000)
    

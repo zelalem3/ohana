@@ -2,278 +2,437 @@
 <html>
 <head>
   <title>OHANA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+
   <link rel="icon" href="../static/images/newohana.PNG" type="image/png">
-  <style>
-
-</style>
+  <link href="https://your-font-service.com/fonts/css/style.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../static/css/index.css">
-    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/testimonials/testimonial-3/assets/css/testimonial-3.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 
+  <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/testimonials/testimonial-3/assets/css/testimonial-3.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-    /* Your custom styles here */
+  <style>
+      HTML SCSS JSResult Skip Results Iframe
+EDIT ON
+* {
+  box-sizing: border-box;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+  padding-top: 75px;
+  background: #ccc;
+  text-align: center;
+  color: #FFF;
+  font-size: 3em;
+}
+View Compiled
+Resources1× 0.5× 0.25×Rerun
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+    .test {
+
+      text-align: center;
+      color: #2c3e50;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .child {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .child.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .childh2 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: #2980b9;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .childp {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      color: #34495e;
+      max-width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
 
 
-</style>
+    .loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+
+.rotating-image {
+      width: 80px;
+      height: 80px;
+      animation: rotate 10s ease-in-out infinite;
+      transition: transform 1s ease-in-out;
+    }
+
+           @keyframes rotate {
+     0% { transform: rotate(0deg);}
+  25% { transform: rotate(90deg);}
+  50% { transform: rotate(160deg);}
+  75% { transform: rotate(270deg);}
+      100% {
+        transform: rotate(310deg);
+      }
+    }
+  </style>
 </head>
 
-<body style="">
+<body>
+  {% if is_logged_in %}
+    {% include "headerloggedin.html" %}
+  {% else %}
+    {% include "headerloggedout.html" %}
+  {% endif %}
 
-{% if is_logged_in %}
-<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
-  <div class="container-fluid">
-      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <section class="hero-section" style="position: relative; ">
+        <button id="toggle-dark-mode" style="width: 40px;position:absolute;top:2%;left:96%;"><img style="width: 40px;" src="../static/images/download.png"></button>
 
-          <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('event') }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('booked') }}">Mybooking</a>
-        </li>
-                <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('book') }}">Book</a>
-        </li>
-               <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
-        </li>
-            <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
-        </li>
-              <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-        </li>
-
-
-
-
-      </ul>
-
-    </div>
-  </div>
-</nav>
-
-
-
-{% else %}
-<nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
-  <div class="container-fluid">
-    <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('event') }}">Event</a>
-        </li>
-
-                <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
-        </li>
-               <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('about') }}">About us</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
-        </li>
-           <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
-        </li>
-              <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
-        </li>
-
-
-
-
-      </ul>
-
-    </div>
-  </div>
-</nav>
-
-{% endif %}
-
-
-<section class="hero-section" style="position: relative; overflow: hidden;">
     <div class="hero-content" style="position: relative; z-index: 1; padding: 20px; color: #fff; text-align: center;">
-        <h1></h1>
-        <h1 style="font-size: 24px; color: black;">Ohana: Creating a Timeless and Aesthetic Memories</h1>
-        <h1 style="font-size: 18px; color: black;" >
-            At "ኦሃና የክት ጥሪ," we take great pride in our ability to create customized and all-encompassing experiences for high school seniors as they approach graduation.
-            Our main objective is to relieve their stress and allow them to fully engage in the joy and festivities of this significant moment.
-        </h1>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-light">Light</button>
+
+      <h1 class="animated-text">Ohana: Creating a Timeless and Aesthetic Memories</h1>
+      <h1 style="font-size: 18px; color: gold;" class="animated-text">At "ኦሃና የክት ጥሪ," we take great pride in our ability to create customized and all-encompassing experiences for high school seniors as they approach graduation. Our main objective is to relieve their stress and allow them to fully engage in the joy and festivities of this significant moment.</h1>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-light">Book</button>
     </div>
-</section>
-<div class="container">
-    <div class="image" style="background-image: url('image1.jpg');"></div>
-    <div class="image" style="background-image: url('image2.jpg');"></div>
-    <div class="image" style="background-image: url('image3.jpg');"></div>
-    <div class="image" style="background-image: url('image4.jpg');"></div>
-    <div class="image" style="background-image: url('image5.jpg');"></div>
-</div>
-
-
-<div>
-  <h1 class="test"> The programs we provide</h1>
-   <div class="parent">
-
-    <div class="child">
-      <img src="../static/images/473.jpg"  style="width: 100%;" alt="Event photo">
-      <h2 class="childh2">Graduation</h2>
-
-      <p style="max-width: 80%;" class="childp">descriptin</p>
-    </div>
-
-    <div class="child">
-      <img src="../static/images/473.jpg"  style="width: 100%;" alt="Event photo">
-      <h2 class="childh2">Training</h2>
-
-      <p style="max-width: 80%;" class="childp">descriptin</p>
-    </div>
-       <div class="child">
-      <img src="../static/images/473.jpg"  style="width: 100%;" alt="Event photo">
-      <h2 class="childh2">Graduation</h2>
-
-      <p style="max-width: 80%;" class="childp">descriptin</p>
-    </div>
-       <div class="child">
-      <img src="../static/images/473.jpg"  style="width: 100%;" alt="Event photo">
-      <h2 class="childh2">Graduation</h2>
-
-      <p style="max-width: 80%;" class="childp">descriptin</p>
-    </div>
-
-
-    <!-- Add more child divs here -->
-  </div>
-</div>
-<h1 class="test">Previous Events</h1>
-<div id="carouselExampleDark" class="carousel carousel-dark slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="../static/images/473.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="../static/images/473.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="../static/images/473.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-    <h1 class="test">Testimonials</h1>
-    <div class="parent">
-        <div class="child">
-                            <figure>
-                                <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="../static/images/473.jpg" alt="users image">
-                                <figcaption>
-                                    <blockquote class="bsb-blockquote-icon mb-4">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
-                                    <h4 class="mb-2 name">John Doe</h4>
-                                    <h5 class="fs-6 text-secondary mb-0">ABC Corp</h5>
-                                    <h5 class="fs-6 text-secondary mb-0">Marketing Manager</h5>
-                                </figcaption>
-                            </figure>
-                        </div>
-
-       <div class="child">
-                            <figure>
-                                <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="../static/images/473.jpg" alt="users image">
-                                <figcaption>
-                                    <blockquote class="bsb-blockquote-icon mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</blockquote>
-                                    <h4 class="mb-2 name">Jane Smith</h4>
-                                    <h5 class="fs-6 text-secondary mb-0"> XYZ Corp</h5>
-                                    <h5 class="fs-6 text-secondary mb-0">CEO</h5>
-                                </figcaption>
-                            </figure>
-                        </div>
-
-   <div class="child">
-                            <figure>
-                                <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="../static/images/473.jpg" alt="users image">
-                                <figcaption>
-                                    <blockquote class="bsb-blockquote-icon mb-4">Ut enim ad minim veniam, quis nostrud exercitation
-                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</blockquote>
-                                    <h4 class="mb-2 name">Alex Johnson</h4>
-                                    <h5 class="fs-6 text-secondary mb-0">123 Company</h5>
-                                    <h5 class="fs-6 text-secondary mb-0">Software Engineer</h5>
-                                </figcaption>
-                            </figure>
-                        </div>
-
-    </div>
-
-</div>
-  <section class="cta-section" style="margin: 0px;background-color: #021f16;">
-    <h2>Ready to book your event?</h2>
-    <a class="cta-button" href="{{ url_for('book') }}">Book an event Now</a>
   </section>
-<a href="https://www.tiktok.com/ohana" style="position: fixed; top: 30%; right: 20px;"><img src="../static/images/tittok.png" style="width: 40px; height: 40px;border-radius: 50%;" alt="Twitter"></a>
 
-  <a href="https://www.instagram.com/ohana" style="position: fixed; top: 39%; right: 20px;"><img src="../static/images/instagram.jpg" style="width: 40px; height: 40px;border-radius: 50%;" alt="Instagram"></a>
-  <a href="https://www.facebook.com/ohana" style="position: fixed; top: 47%; right: 20px;"><img src="../static/images/facebook.png" style="width: 40px; height: 40px;" alt="LinkedIn"></a>
- <a href="https://www.youtube.com/ohana" style="position: fixed; top: 55%; right: 20px;"><img src="../static/images/youtube.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="LinkedIn"></a>
+  <a href="{{ url_for('partners') }}" style="text-decoration: none;"><h1 class="test" style="color:#a0702c;">Our partners</h1></a>
+  <hr>
+  <div class="container">
+    <div class="image" style="background-image: url('../static/images/awaqi.jpg'); height:140px;"></div>
+    <div class="image" style="background-image: url('../static/images/afriwork.png'); height:140px;"></div>
+    <div class="image" style="background-image: url('static/images/luminous.png'); height:140px;"></div>
+    <div class="image" style="background-image: url('static/images/gezeta.jpg'); height:140px;"></div>
+    <div class="image" style="background-image: url('static/images/amplify.jpg'); height:140px;width: 300px;"></div>
+  </div>
 
+  <hr>
+
+  <div>
+    <h1 class="test" style="color:#a0702c;"> The programs we provide</h1>
+    <div class="parent">
+      <div class="child" style="">
+        <img src="../static/images/473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Graduation</h2>
+        <p class="childp">description</p>
+      </div>
+      <div class="child">
+        <img src="../static/images/473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Training</h2>
+        <p class="childp">description</p>
+      </div>
+      <div class="child">
+        <img src="../static/images/473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Graduation</h2>
+        <p class="childp">description</p>
+      </div>
+      <div class="child">
+        <img src="../static/images/473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Graduation</h2>
+        <p class="childp">description</p>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="test" style="color:#a0702c;">Previous Events</h1>
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../static/images/473.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/473.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/473.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+<h1 style="color:#a0702c;margin-left:30%;">Testimonial</h1>
+<div class="owl-carousel owl-theme mt-5">
+        <div class="owl-item">
+            <div class="card">
+                <div class="img-card">
+                    <img src="../static/images/473.jpg"
+                        alt="alternative for image">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                    saepe quo natus aut accusantium alias blanditiis.
+                </div>
+                <div class="name">
+                    Denis Richie
+                </div>
+            </div>
+        </div>
+        <div class="owl-item">
+            <div class="card">
+                <div class="img-card">
+                    <img src="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                    saepe quo natus aut accusantium alias blanditiis.
+                </div>
+                <div class="name">
+                    Lisa Sthalekar
+                </div>
+            </div>
+        </div>
+        <div class="owl-item">
+            <div class="card">
+                <div class="img-card">
+                    <img src="https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                    saepe quo natus aut accusantium alias blanditiis.
+                </div>
+                <div class="name">
+                    Elizabith Richie
+                </div>
+            </div>
+        </div>
+        <div class="owl-item">
+            <div class="card">
+                <div class="img-card">
+                    <img src="https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                    saepe quo natus aut accusantium alias blanditiis.
+                </div>
+                <div class="name">
+                    Daniel Xavier
+                </div>
+            </div>
+        </div>
+        <div class="owl-item">
+            <div class="card">
+                <div class="img-card">
+                    <img src="https://images.pexels.com/photos/1832959/pexels-photo-1832959.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                    saepe quo natus aut accusantium alias blanditiis.
+                </div>
+                <div class="name">
+                    Emma Watson
+                </div>
+            </div>
+        </div>
+        <div class="owl-item">
+            <div class="card">
+                <div class="img-card">
+                    <img src="https://images.pexels.com/photos/718261/pexels-photo-718261.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                    saepe quo natus aut accusantium alias blanditiis.
+                </div>
+                <div class="name">
+                    Mohammad Imran
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="cta-section" style="margin: 0px;background-color: #021f16;">
+    <h2 style="padding-top:20px;">Ready to book your event?</h2>
+    <a class="cta-button" href="{{ url_for('book') }}">Book an event Now</a>
   <footer>
     <p>&copy; {{ year }} OHANA. All rights reserved.</p>
   </footer>
-<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/3259a3ed9a.js" crossorigin="anonymous"></script>
+  </section>
+
+
+
+ <a href="https://www.tiktok.com/ohana" style="position: fixed; top: 30%; right: 20px;z-index:1;"><img src="../static/images/tittok.png" style="width: 40px; height: 40px;border-radius: 50%;" alt="Twitter"></a>
+
+       <a href="https://www.instagram.com/ohana" style="position: fixed; top: 39%; right: 20px;z-index:1;"><img src="../static/images/instagram.jpg" style="width: 40px; height: 40px;border-radius: 50%;" alt="Instagram"></a>
+  <a href="https://www.linkedin.com/ohana" style="position: fixed; top: 47%; right: 20px;z-index:1;"><img src="../static/images/facebook.png" style="width: 40px; height: 40px;" alt="LinkedIn"></a>
+ <a href="https://www.linkedin.com/ohana" style="position: fixed; top: 55%; right: 20px;z-index:1;"><img src="../static/images/youtube.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="LinkedIn"></a>
+
+
+
+  <div class="loader-wrapper">
+      <span class="loader"><img class="rotating-image" src="../static/images/ohana.PNG"></span>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <script src="../static/js/darkmode.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      var observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, options);
+
+
+  </script>
+  <script>
+
+$(document).ready(function () {
+    var silder = $(".owl-carousel");
+    silder.owlCarousel({
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        items: 1,
+        stagePadding: 20,
+        center: true,
+        nav: false,
+        margin: 50,
+        dots: true,
+        loop: true,
+        responsive: {
+            0: { items: 1 },
+            480: { items: 2 },
+            575: { items: 2 },
+            768: { items: 2 },
+            991: { items: 3 },
+            1200: { items: 4 }
+        }
+    });
+});
+  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+
 <script src="../static/js/index.js"></script>
 </body>
 </html>

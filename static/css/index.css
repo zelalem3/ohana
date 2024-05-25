@@ -5,15 +5,26 @@
 }
  body {
     background-color: #31363F;
+     font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
   }
+  /* Setting up the Whitney font with fallbacks */
+ @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
+
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
+
+
 
 header {
   background-color: #f5f5f5;
   padding: 20px;
-}
-
-ul, h1, h2, h3, li, i{
-font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
 }
 
 nav ul {
@@ -32,22 +43,160 @@ nav ul li a {
 }
 
 /* Style the hero section */
+/* Base styles for hero-section */
 .hero-section {
   display: flex;
   min-height: 100vh;
-   margin-top: 3px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 40px;
   background-color: #f9f9f9;
   text-align: center;
   position: relative;
-   overflow: hidden;
-   background-image: url(../images/dog-img.jpg);
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
+  overflow: hidden;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.hero-content {
+  flex-basis: 50%;
+  max-width: 800px; /* Limit max width for better responsiveness */
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 60%;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.hero-content .btn {
+  margin: 10px;
+}
+
+/* Media query for portrait phones (up to 480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 20px; /* Reduce padding */
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .hero-content h1 {
+    font-size: 24px; /* Smaller font for smaller screens */
+  }
+
+  .hero-content p {
+    font-size: 16px; /* Adjust font size */
+  }
+
+  .hero-content .btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0; /* Stack buttons vertically */
+  }
+
+  .hero-image img {
+    width: 100%; /* Adjust image width */
+    margin-top: 20px; /* Add some space above image */
+  }
+}
+
+/* Media query for larger phones (between 481px and 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero-section {
+    padding: 30px; /* Adjust padding */
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .hero-content h1 {
+    font-size: 28px; /* Adjust as needed */
+  }
+
+  .hero-content p {
+    font-size: 17px; /* Adjust font size */
+  }
+
+  .hero-content .btn {
+    display: inline-block;
+    width: auto;
+    margin: 5px; /* Space buttons appropriately */
+  }
+
+  .hero-image img {
+    width: 100%; /* Adjust image width */
+    margin-top: 20px; /* Add some space above image */
+  }
+}
+
+/* Media query for tablets (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 40px;
+    flex-direction: row; /* Side by side layout */
+  }
+
+  .hero-content {
+    flex-basis: 50%;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .hero-content .btn {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .hero-image img {
+    width: 70%;
+    margin-top: 0; /* Remove extra margin */
+  }
+}
+
+/* Media query for desktops (1025px and above) */
+@media (min-width: 1025px) {
+  .hero-section {
+    padding: 40px;
+    flex-direction: row; /* Side by side layout */
+  }
+
+  .hero-content {
+    flex-basis: 50%;
+  }
+
+  .hero-content h1 {
+    font-size: 10px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .hero-content .btn {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .hero-image img {
+    width: 50%;
+    margin-top: 0; /* Remove extra margin */
+  }
+}
+
 
 .hero-content {
   flex-basis: 50%;
@@ -96,6 +245,7 @@ font-size:25px;
   justify-content: center;
 }
 
+
 .feature {
   padding: 20px;
   border: 1px solid #ccc;
@@ -120,51 +270,18 @@ font-size:25px;
   color: #666;
 }
 
-/* Style the testimonial section */
-.testimonial-section {
-  background-color: #f9f9f9;
-  padding: 60px;
-  text-align: center;
-}
 
-.testimonial-section h2 {
-  font-size: 28px;
-  margin-bottom: 30px;
-}
 
-.testimonial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.testimonial-content p {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.testimonial-content span {
-  font-size: 16px;
-}
-
-.testimonial-image img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-top: 20px;
-}
 
 
 .cta-section {
   background-color: #333;
-  padding: 40px;
+
   text-align: center;
 }
 
 .cta-section h2 {
+  margin-top: 30px;
   color: #fff;
   font-size: 28px;
   margin-bottom: 30px;
@@ -195,15 +312,17 @@ footer {
 footer p {
   font-size: 14px;
 }
+h1{
+color: black;
+}
+
 .navbar-nav .nav-link {
   color: white;
 }
 .navbar-nav .nav-link.active {
   color: white;
 }
-h1{
-color: black;
-}
+
 
 .navbar-nav .nav-link:hover {
   color: grey;
@@ -294,21 +413,22 @@ main {
     }
     .image {
         display: inline-block;
-        width: 100px;
+        width:  150px;
         height: 100px;
         margin: 10px 60px; /* Adjusted margin for more space between images */
         background-color: lightblue;
         background-size: cover;
     }
 
-    @keyframes moveImages {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(100%);
-        }
-    }
+@keyframes moveImages {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
     .parent {
       display: flex;
       flex-wrap: wrap;
@@ -330,12 +450,14 @@ main {
       .child {
         width: calc(50% - 10px);
       }
+
     }
 
     @media (max-width: 480px) {
       .child {
         width: 100%;
       }
+
     }
     .social-icons {
         position: fixed;
@@ -377,6 +499,7 @@ margin-left: 10%;
 .child {
   position: relative;
   overflow: hidden;
+
 }
 
 .child:before {
@@ -433,7 +556,8 @@ margin-left: 10%;
 }
 
 .name, .fs-6,.test{
-margin-left: 25%;}
+margin-left: 25%;
+}
 .social-icon {
     position: fixed;
     width: 40px;
@@ -510,6 +634,7 @@ margin-left: 25%;}
         top: 15%;
     }
 
+
     #instagram-icon {
         top: 45%;
     }
@@ -527,6 +652,7 @@ margin-left: 25%;}
         top: 20%;
     }
 
+
     #instagram-icon {
         top: 35%;
     }
@@ -542,3 +668,182 @@ margin-left: 25%;}
 .mb-0{
 padding-bottom: 10px;
 }
+
+
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+/* Additional dark mode styles for other elements */
+header,  .hero-section,  .carousel, .testimonial {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode .hero-section,
+body.dark-mode .container,
+body.dark-mode .carousel,
+body.dark-mode .testimonial,
+
+{
+  background-color: #333;
+  color: white;
+}
+img{
+width:100%;}
+body.dark-mode h1{
+color:white;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: blue;
+  color: white;
+}
+body.dark-mode .container{
+background-color: black;}
+body.dark-mode .btn-primary {
+  background-color: darkblue;
+  color: white;
+}
+
+.btn-light {
+  background-color: white;
+  color: black;
+}
+
+body.dark-mode .btn-light {
+  background-color: #444;
+  color: white;
+}
+
+
+
+
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+
+    min-height: 100vh;
+}
+
+.owl-carousel .owl-item {
+    transition: all 0.3s ease-in-out;
+}
+
+.owl-carousel .owl-item .card {
+    padding: 30px;
+    position: relative;
+}
+
+.owl-carousel .owl-stage-outer {
+    overflow-y: auto !important;
+    padding-bottom: 40px;
+}
+
+.owl-carousel .owl-item img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.owl-carousel .owl-item .card .name {
+    position: absolute;
+    bottom: -20px;
+    left: 33%;
+    color: #101c81;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: aquamarine;
+    padding: 0.3rem 0.4rem;
+    border-radius: 5px;
+    box-shadow: 2px 3px 15px #3c405a;
+}
+
+.owl-carousel .owl-item .card {
+    opacity: 0.2;
+    transform: scale3d(0.8, 0.8, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.owl-carousel .owl-item.active.center .card {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+}
+
+.owl-carousel .owl-dots {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    height: 20px;
+
+    border-radius: 2px !important;
+    opacity: 0.8;
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    height: 13px;
+    width: 13px;
+    opacity: 1;
+    transform: translateY(2px);
+    background: #83b8e7 !important;
+}
+
+@media(min-width: 480.6px) and (max-width: 575.5px) {
+    .owl-carousel .owl-item .card .name {
+        left: 24%;
+    }
+}
+
+@media(max-width: 360px) {
+    .owl-carousel .owl-item .card .name {
+        left: 30%;
+    }
+}
+
+
+
+.animated-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 2s ease forwards;
+}
+
+.animated-text:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+

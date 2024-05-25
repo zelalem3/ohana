@@ -2,7 +2,17 @@
       font-family: 'Open Sans', sans-serif;
       background-color: #f8f9fa;
     }
+ @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
 
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
     a {
       text-decoration: none;
     }

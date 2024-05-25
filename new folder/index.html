@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OHANA</title>
+  <link rel="icon" href="../static/images/newohana.PNG" type="image/png">
+  <link href="https://your-font-service.com/fonts/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/testimonials/testimonial-3/assets/css/testimonial-3.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+    .test {
+
+      text-align: center;
+      color: #2c3e50;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .child {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .child.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .childh2 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: #2980b9;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .childp {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      color: #34495e;
+      max-width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .testimonial-item {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .testimonial-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonial-item.hidden {
+      opacity: 0;
+      transform: translateX(0);
+    }
+
+    .testimonials-title {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .testimonials-title.visible {
+      opacity: 1;
+    }
+    .loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+
+.rotating-image {
+      width: 80px;
+      height: 80px;
+      animation: rotate 10s ease-in-out infinite;
+      transition: transform 1s ease-in-out;
+    }
+
+           @keyframes rotate {
+     0% { transform: rotate(0deg);}
+  25% { transform: rotate(90deg);}
+  50% { transform: rotate(160deg);}
+  75% { transform: rotate(270deg);}
+      100% {
+        transform: rotate(310deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-#021f16" style="background-color: #021f16;">
+    <div class="container-fluid">
+      <a href="{{ url_for('home') }}"><img  style="width: 60px; " src="../static/images/newohana.png"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('event') }}">Event</a>
+          </li>
+  
+                  <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+          </li>
+                 <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact us</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('whatwedid') }}">Previous Events</a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('blog') }}">Our Blogs</a>
+          </li>
+                <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+          </li>
+               <li class="nav-item" >
+                          <button id="toggle-dark-mode" style="width: 40px;margin-left:10%;margin-right: 5%;"><img style="width: 40px;margin-right: 10%;" src="download.png"></button>
+  
+          </li>
+  
+  
+  
+  
+        </ul>
+  
+      </div>
+    </div>
+  </nav>
+  
+  <section class="hero-section" style="position: relative; overflow: hidden;">
+    <div class="hero-content" style="position: relative; z-index: 1; padding: 20px; color: #fff; text-align: center;">
+
+      <h1>Ohana: Creating a Timeless and Aesthetic Memories</h1>
+      <h1 style="font-size: 18px; color: blue;">At "ኦሃና የክት ጥሪ," we take great pride in our ability to create customized and all-encompassing experiences for high school seniors as they approach graduation. Our main objective is to relieve their stress and allow them to fully engage in the joy and festivities of this significant moment.</h1>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-light">Book</button>
+    </div>
+  </section>
+
+  <a href="{{ url_for('partners') }}" style="text-decoration: none;"><h1 class="test">Our partners</h1></a>
+  <hr>
+  <div class="container">
+    <div class="image" style="background-image: url('awaqi.jpg'); height:140px;"></div>
+    <div class="image" style="background-image: url('afriwork.png'); height:140px;"></div>
+    <div class="image" style="background-image: url('luminous.png'); height:140px;"></div>
+    <div class="image" style="background-image: url('gezeta.jpg'); height:140px;"></div>
+    <div class="image" style="background-image: url('amplify.jpg'); height:140px;width: 300px;"></div>
+  </div>
+
+  <hr>
+
+  <div>
+    <h1 class="test"> The programs we provide</h1>
+    <div class="parent">
+      <div class="child">
+        <img src="473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Graduation</h2>
+        <p class="childp">description</p>
+      </div>
+      <div class="child">
+        <img src="473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Training</h2>
+        <p class="childp">description</p>
+      </div>
+      <div class="child">
+        <img src="473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Graduation</h2>
+        <p class="childp">description</p>
+      </div>
+      <div class="child">
+        <img src="473.jpg" style="width: 100%;" alt="Event photo">
+        <h2 class="childh2">Graduation</h2>
+        <p class="childp">description</p>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="test">Previous Events</h1>
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="473.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="EVENTS.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="473.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <h1 class="testimonials-title">Testimonials</h1>
+  <div class="testimonials-container">
+    <div class="testimonial-item">
+      <figure>
+        <img class="testimonial-image" loading="lazy" src="473.jpg" alt="users image">
+        <figcaption>
+          <blockquote class="testimonial-quote">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
+          <h4 class="testimonial-name">John Doe</h4>
+          <h5 class="testimonial-role">CEO, Company</h5>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="testimonial-item">
+      <figure>
+        <img class="testimonial-image" loading="lazy" src="473.jpg" alt="users image">
+        <figcaption>
+          <blockquote class="testimonial-quote">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
+          <h4 class="testimonial-name">John Doe</h4>
+          <h5 class="testimonial-role">CEO, Company</h5>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="testimonial-item">
+      <figure>
+        <img class="testimonial-image" loading="lazy" src="473.jpg" alt="users image">
+        <figcaption>
+          <blockquote class="testimonial-quote">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
+          <h4 class="testimonial-name">John Doe</h4>
+          <h5 class="testimonial-role">CEO, Company</h5>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+<section class="cta-section" style="margin: 0px;background-color: #021f16;">
+    <h2>Ready to book your event?</h2>
+    <a class="cta-button" href="{{ url_for('book') }}">Book an event Now</a>
+  <footer>
+    <p>&copy; {{ year }} OHANA. All rights reserved.</p>
+  </footer>
+  </section>
+
+
+
+ <a href="https://www.tiktok.com/ohana" style="position: fixed; top: 30%; right: 20px;"><img src="tittok.png" style="width: 40px; height: 40px;border-radius: 50%;" alt="Twitter"></a>
+
+       <a href="https://www.instagram.com/ohana" style="position: fixed; top: 39%; right: 20px;"><img src="instagram.jpg" style="width: 40px; height: 40px;border-radius: 50%;" alt="Instagram"></a>
+  <a href="https://www.linkedin.com/ohana" style="position: fixed; top: 47%; right: 20px;"><img src="facebook.png" style="width: 40px; height: 40px;" alt="LinkedIn"></a>
+ <a href="https://www.linkedin.com/ohana" style="position: fixed; top: 55%; right: 20px;"><img src="youtube.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="LinkedIn"></a>
+
+
+  <div class="loader-wrapper">
+      <span class="loader"><img class="rotating-image" src="ohana.PNG"></span>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <script src="darkmode.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      var observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, options);
+
+      document.querySelectorAll('.testimonial-item').forEach(function(item) {
+        observer.observe(item);
+      });
+
+      document.querySelectorAll('.testimonials-title, .child').forEach(function(item) {
+        observer.observe(item);
+      });
+    });
+    $(document).ready(function() {
+        $(".loader-wrapper").fadeOut("slow");
+      });
+  </script>
+<script src="../static/js/index.js"></script>
+</body>
+</html>

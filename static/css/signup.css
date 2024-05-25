@@ -1,5 +1,5 @@
 body {
-      font-family: Arial, sans-serif;
+      font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
       background-color: #f2f2f2;
       margin: 0;
       padding: 0;
@@ -12,6 +12,17 @@ body {
       height: 100vh;
       margin-top: 50px;
     }
+     @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
+
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
 
     .form-container {
       background-color: #ffffff;

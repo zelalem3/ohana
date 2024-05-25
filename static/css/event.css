@@ -1,5 +1,6 @@
 body {
     display: flex;
+    font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
@@ -9,6 +10,17 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+ @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
+
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
 .container {
     flex: 1;
     margin-left: 7%;

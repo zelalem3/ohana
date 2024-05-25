@@ -1,3 +1,7 @@
+body{
+font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -14,6 +18,17 @@ table {
 .navbar-nav .nav-link.active {
   color: white;
 }
+ @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
+
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
 
 th, td {
   padding: 8px;

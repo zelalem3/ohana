@@ -1,5 +1,5 @@
   body {
-      font-family: Arial, sans-serif;
+      font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
       background-color:
     }
     h1 {
@@ -17,6 +17,17 @@
       margin: 0 auto;
       margin-top: 40px;
     }
+     @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
+
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
     .image {
       width: 400px;
       height: 300px;
@@ -44,4 +55,11 @@
 }
 .navbar-nav .nav-link:hover {
   color: grey;
+}
+body.dark-mode{
+background-color:black;
+color:white;
+}
+body.dark-mode h1,p{
+color:white;
 }

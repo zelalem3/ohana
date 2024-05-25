@@ -1,8 +1,19 @@
  body {
-            font-family: Arial, sans-serif;
+            font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
             background-color: #f8f9fa;
 
             margin: 0;
+        }
+         @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
+
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
         }
 
 h1 {
@@ -99,3 +110,18 @@ select {
   color: grey;
 }
 
+   body.dark-mode,
+    body.dark-mode .form-group,
+    body.dark-mode form{
+    background-color: black;
+    color:white;
+    }
+    body.dark-mode input,
+    body.dark-mode textarea{
+    background-color:black;
+    color:white;
+    }
+    body.dark-mode input["date"]
+    {
+    background-color:white;
+    }

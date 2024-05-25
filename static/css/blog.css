@@ -1,8 +1,18 @@
  body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
       background-color: #f8f9fa;
     }
+ @font-face {
+          font-family: 'Whitney SSm A';
+          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+               url('path/to/whitney-ssm-a.woff') format('woff');
+        }
 
+        @font-face {
+          font-family: 'Whitney SSm B';
+          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+               url('path/to/whitney-ssm-b.woff') format('woff');
+        }
     a {
       text-decoration: none;
     }
@@ -10,7 +20,7 @@
     .masthead {
       position: relative;
       height: 60vh;
-      background-image: url(../static/images/dog-img.jpg);
+      background-image: url(../images/grad.jpg);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -107,3 +117,31 @@
 .navbar-nav .nav-link.active {
   color: white;
 }
+  .parent {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+       animation: scroll 1s ease-in-out;/* Adjust the gap between child divs */
+    }
+
+    .child {
+      width: calc(50% - 40px); /* 25% width for each child div with 10px gap */
+
+      padding: 20px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Adjust child div width for responsive layout */
+    @media (max-width: 768px) {
+      .child {
+        width: calc(50% - 10px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .child {
+        width: 100%;
+      }
+    }

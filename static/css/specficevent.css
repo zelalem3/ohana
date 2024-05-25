@@ -1,40 +1,45 @@
-body{
-font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
+body {
+    font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
 }
-   .navbar-nav .nav-link {
-  color: white;
+
+.navbar-nav .nav-link {
+    color: white;
 }
 .navbar-nav .nav-link.active {
-  color: white;
+    color: white;
 }
-
 .navbar-nav .nav-link:hover {
-  color: grey;
+    color: grey;
 }
-  .event-details {
-            margin: 60px;
-        }
-        .content-container {
-    display: flex;
-    align-items: flex-start;
-}
- @font-face {
-          font-family: 'Whitney SSm A';
-          src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
-               url('path/to/whitney-ssm-a.woff') format('woff');
-        }
 
-        @font-face {
-          font-family: 'Whitney SSm B';
-          src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
-               url('path/to/whitney-ssm-b.woff') format('woff');
-        }
+.event-details {
+    margin: 20px; /* Adjust for small screens */
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column; /* Default to column for smaller screens */
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'Whitney SSm A';
+    src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
+         url('path/to/whitney-ssm-a.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Whitney SSm B';
+    src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
+         url('path/to/whitney-ssm-b.woff') format('woff');
+}
 
 .appealing-image {
     flex-shrink: 0;
-    width: 50%;
+    width: 100%; /* Make images responsive */
+    max-width: 400px; /* Optional: Limit max width */
     height: auto;
-    margin-right: 20px;
+    margin-bottom: 20px; /* Space between image and text */
 }
 
 .text-container {
@@ -43,21 +48,27 @@ font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
     justify-content: flex-start;
 }
 
-        .card-header {
-            background-color: #021f16;
-            color: #ffffff;
-        }
+.card-header {
+    background-color: #021f16;
+    color: #ffffff;
+}
 
+.card-body {
+    background-color: #f8f9fa;
+}
 
-        .card-body {
-            background-color: #f8f9fa;
-        }
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px;
+}
 
-        footer {
-            background-color: #343a40;
-            color: #ffffff;
-            padding: 20px;
-        }
-        .appealing-image{
-        width: 50%;
-        }
+@media (min-width: 768px) {
+    .content-container {
+        flex-direction: row; /* Change to row for larger screens */
+        align-items: flex-start;
+    }
+    .appealing-image {
+        margin-right: 20px; /* Space between image and text */
+    }
+}

@@ -270,38 +270,38 @@ def book():
         db.session.add(book)
         db.session.commit()
         return redirect(url_for('booked'))
-        #
-        # key = "Bearer CHASECK_TEST-d0r12ujLpJSs6TuCGYxr4fJ6ME1vZll4"
-        # url = "https://api.chapa.co/v1/transaction/initialize"
-        # payload = {
-        #     "amount": amount,
-        #     "currency": "ETB",
-        #     "email": email,
-        #     "first_name": first_name,
-        #     "last_name": last_name,
-        #     "phone_number": phone_number,
-        #     "tx_ref": "chewatatest-"+str(uuid.uuid4()),
-        #     "callback_url": "https://www.google.com",
-        #     "return_url": "https://www.google.com/",
-        #     "customization": {
-        #         "title": "Payment for nt",
-        #         "description": "I love online payments"
-        #     }
-        # }
-        # headers = {
-        #     'Authorization': key,
-        #     'Content-Type': 'application/json'
-        # }
-        #
-        # response = requests.post(url, json=payload, headers=headers)
-        # # data = response.text
-        # data = response.json()
-        #
-        # if data["status"] == "success":
-        #     return redirect(data["data"]["checkout_url"])
-        #
-        # else:
-        #     return render_template("failure.html")
+
+        key = "Bearer CHASECK_TEST-d0r12ujLpJSs6TuCGYxr4fJ6ME1vZll4"
+        url = "https://api.chapa.co/v1/transaction/initialize"
+        payload = {
+            "amount": amount,
+            "currency": "ETB",
+            "email": email,
+            "first_name": first_name,
+            "last_name": last_name,
+            "phone_number": phone_number,
+            "tx_ref": "chewatatest-"+str(uuid.uuid4()),
+            "callback_url": "https://www.google.com",
+            "return_url": "https://www.google.com/",
+            "customization": {
+                "title": "Payment for nt",
+                "description": "I love online payments"
+            }
+        }
+        headers = {
+            'Authorization': key,
+            'Content-Type': 'application/json'
+        }
+
+        response = requests.post(url, json=payload, headers=headers)
+        # data = response.text
+        data = response.json()
+
+        if data["status"] == "success":
+            return redirect(data["data"]["checkout_url"])
+
+        else:
+            return render_template("failure.html")
 
     else:
         return render_template("book.html", is_logged_in=is_logged_in, events=allevent, year=current_year)

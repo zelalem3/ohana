@@ -262,15 +262,15 @@ def book():
         key = "Bearer CHASECK_TEST-d0r12ujLpJSs6TuCGYxr4fJ6ME1vZll4"
         url = "https://api.chapa.co/v1/transaction/initialize"
         payload = {
-            "amount": amount,
+            "amount": event.price,
             "currency": "ETB",
-            "email": email,
-            "first_name": first_name,
-            "last_name": last_name,
-            "phone_number": phone_number,
+            "email": current_user.email,
+            "first_name": current_user.fame,
+            "last_name": current_user.lname,
+            "phone_number": current_user.phone_number,
             "tx_ref": "chewatatest-" + str(uuid.uuid4()),
-            "callback_url": "https://www.google.com",
-            "return_url": "https://www.google.com/",
+            "callback_url": url_for('processpayment', event_id=event_id, date=date, specficrequest=specfic_request, _external=True),
+            "return_url": url_for('book', _external=True),
             "customization": {
                 "title": "Payment for nt",
                 "description": "I love online payments"
@@ -282,30 +282,65 @@ def book():
         }
 
         response = requests.post(url, json=payload, headers=headers)
-        # data = response.text
         data = response.json()
 
         if data["status"] == "success":
             return redirect(data["data"]["checkout_url"])
-
         else:
             return render_template("failure.html")
 
-        book = Book(
-            user_id=user_id,
-            event_id=event_id,
-            specfic_request=specfic_request,
-            booked_for=date,
-            event_type=event_type,
-
-        )
-        db.session.add(book)
-        db.session.commit()
-        return redirect(url_for('booked'))
-
-
     else:
         return render_template("book.html", is_logged_in=is_logged_in, events=allevent, year=current_year)
+
+
+@app.route("/processpayment", methods=["POST"])
+def processpayment():
+    if request.is_json:
+        data = request.get_json()
+        message = data.get('message')
+
+        if message == "Payment details":
+            payment_status = data.get('status')
+            payment_data = data.get('data', {})
+
+            first_name = payment_data.get('first_name')
+            last_name = payment_data.get('last_name')
+            email = payment_data.get('email')
+            currency = payment_data.get('currency')
+            amount = payment_data.get('amount')
+            charge = payment_data.get('charge')
+            mode = payment_data.get('mode')
+            method = payment_data.get('method')
+            payment_status = payment_data.get('status')
+            reference = payment_data.get('reference')
+            tx_ref = payment_data.get('tx_ref')
+            customization = payment_data.get('customization', {})
+            created_at = payment_data.get('created_at')
+            updated_at = payment_data.get('updated_at')
+
+            # Extract parameters from the URL
+            event_id = request.args.get('event_id')
+            date = request.args.get('date')
+            specfic_request = request.args.get('specficrequest')
+            user_id = current_user.id  # Assuming the user is still logged in
+
+            # Save the booking if the payment was successful
+            if payment_status == "success":
+                book = Book(
+                    user_id=user_id,
+                    event_id=event_id,
+                    specfic_request=specfic_request,
+                    booked_for=date,
+                )
+                db.session.add(book)
+                db.session.commit()
+                return jsonify({"message": "Booking created successfully"}), 200
+            else:
+                return jsonify({"error": "Payment not successful"}), 400
+        else:
+            return jsonify({"error": "Invalid payment message"}), 400
+    else:
+        return jsonify({"error": "Invalid data format"}), 400
 
 
 @app.route("/error")

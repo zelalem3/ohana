@@ -360,5 +360,10 @@ footer p {
 body.dark-mode .col-md-4 h5{
 color:white;
 }
-body.dark-mode .text-center h3,p{
-color:white;}
+body.dark-mode .text-center {
+color:white;
+}
+body.dark-mode h3,
+ body.dark-mode p{
+color:white;
+}

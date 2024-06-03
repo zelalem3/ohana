@@ -424,27 +424,62 @@ main {
         margin: 0;
         overflow: hidden;
     }
-    .container {
-        white-space: nowrap;
-        animation: moveImages 13s linear infinite;
-    }
-    .image {
-        display: inline-block;
-        width:  150px;
-        height: 100px;
-        margin: 10px 60px; /* Adjusted margin for more space between images */
-        background-color: lightblue;
-        background-size: cover;
-    }
+  .container {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  animation: moveImages 13s linear infinite;
+}
+
+.image {
+   margin:30px;
+  width: 150px;
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 20px;
+}
 
 @keyframes moveImages {
   0% {
-    transform: translateX(-100%);
-  }
-  100% {
     transform: translateX(100%);
   }
+  100% {
+    transform: translateX(-100%);
+  }
 }
+
+@media (max-width: 768px) {
+  .image {
+    width: 40%;
+  }
+
+  @keyframes moveImages {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-60%);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .image {
+    width: 100%;
+  }
+
+  @keyframes moveImages {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+
 
     .parent {
       display: flex;
@@ -476,37 +511,45 @@ main {
       }
 
     }
-    .social-icons {
-        position: fixed;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        background-color: transparent;
-        border: none;
-        margin-left: 20px;
-    }
-    .social-icons a {
 
-    display: block;
-    width: 40px;
-    height: 40px;
-    color: #333; /* Change icon color */
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
+    .social-icon {
+  position: fixed;
+  z-index: 1;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
 }
-        background-color: transparent; /* Or use 'initial' */
-    }
-    .social-icons a img{
-    width: 100%;
-    margin-top: 5%;
-    }
+
+.social-icon:hover {
+  transform: scale(1.5);
+}
+
+.social-icon-tiktok {
+  top: 30%;
+  right: 20px;
+}
+
+.social-icon-instagram {
+  top: 39%;
+  right: 20px;
+
+}
+
+.social-icon-telegram {
+  top: 47%;
+  right: 20px;
+  width: 100px;
+}
+
+.social-icon-youtube {
+  top: 55%;
+  right: 20px;
+  border-radius: 50%;
+}
     body {
     overflow-y: scroll; /* Enable vertical scrolling */
 }

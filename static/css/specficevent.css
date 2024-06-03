@@ -1,74 +1,48 @@
+/* Additional Styles */
 body {
-    font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial, sans-serif;
-}
-
-.navbar-nav .nav-link {
-    color: white;
-}
-.navbar-nav .nav-link.active {
-    color: white;
-}
-.navbar-nav .nav-link:hover {
-    color: grey;
-}
-
-.event-details {
-    margin: 20px; /* Adjust for small screens */
-}
-
-.content-container {
-    display: flex;
-    flex-direction: column; /* Default to column for smaller screens */
-    align-items: center;
-}
-
-@font-face {
-    font-family: 'Whitney SSm A';
-    src: url('path/to/whitney-ssm-a.woff2') format('woff2'),
-         url('path/to/whitney-ssm-a.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Whitney SSm B';
-    src: url('path/to/whitney-ssm-b.woff2') format('woff2'),
-         url('path/to/whitney-ssm-b.woff') format('woff');
-}
-
-.appealing-image {
-    flex-shrink: 0;
-    width: 100%; /* Make images responsive */
-    max-width: 400px; /* Optional: Limit max width */
-    height: auto;
-    margin-bottom: 20px; /* Space between image and text */
-}
-
-.text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.card-header {
-    background-color: #021f16;
-    color: #ffffff;
-}
-
-.card-body {
+    font-family: 'Your Custom Font', sans-serif;
     background-color: #f8f9fa;
 }
 
-footer {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 20px;
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) {
-    .content-container {
-        flex-direction: row; /* Change to row for larger screens */
-        align-items: flex-start;
-    }
-    .appealing-image {
-        margin-right: 20px; /* Space between image and text */
-    }
+.card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #a0702c;
+    color: #fff;
+}
+
+.appealing-image {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-dark {
+    border-color: #343a40;
+    color: #343a40;
+}
+
+.btn-outline-dark:hover {
+    background-color: #343a40;
+    color: #fff;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav .nav-link.active {
+  color: white;
+}
+
+
+.navbar-nav .nav-link:hover {
+  color: grey;
 }

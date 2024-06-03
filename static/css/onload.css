@@ -1,0 +1,46 @@
+
+    .loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+
+.rotating-image {
+      width: 80px;
+      height: 80px;
+      animation: rotate 10s ease-in-out infinite;
+      transition: transform 1s ease-in-out;
+    }
+
+           @keyframes rotate {
+     0% { transform: rotate(0deg);}
+  25% { transform: rotate(90deg);}
+  50% { transform: rotate(160deg);}
+  75% { transform: rotate(270deg);}
+      100% {
+        transform: rotate(310deg);
+      }
+    }
